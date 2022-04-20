@@ -1,3 +1,19 @@
 body {
   background-color: lightsalmon;
 }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card {
+  margin-top: 10px;
+  text-align: center;
+}
+.card-title {
+  background-color: lightgrey;
+  height: auto;
+}
+.card-img-top {
+  padding: 4px;
+}

@@ -243,3 +243,25 @@ const pets = [
       "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119",
   },
 ];
+pets.forEach((item, index) => {
+  item.id = index + 1;
+});
+
+let petDiv = document.querySelector("#pets");
+
+pets.forEach((petObj) => {
+  petDiv.innerHTML += `<div class="card" style="width: 18rem;">
+  <h5 class="card-title">${petObj.name}</h5>
+ <img src="${petObj.imageUrl}" class="card-img-top" alt="...">
+<div class="card-body">
+ <li class="list-group-item">${petObj.color}</li>
+  <p class="card-text">${petObj.specialSkill}</p>
+</div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">${petObj.type}</li>
+  
+ 
+</ul>
+
+</div>`;
+});
