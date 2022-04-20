@@ -15,7 +15,8 @@ const pets = [
     specialSkill:
       "Just picks the tomatoes off of a sandwich instead of requesting a whole new sandwich.",
     type: "dino",
-    imageUrl: "http://www.jozilife.co.za/wp-content/uploads/The-Dino-Expo.jpg",
+    imageUrl:
+      "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg",
   },
   {
     name: "Whiskers",
@@ -63,7 +64,7 @@ const pets = [
     specialSkill: "Comfortable in the outdoors for up to eight hours.",
     type: "dino",
     imageUrl:
-      "http://www.theouthousers.com/images/jck//ThanosCopter/news/grumpasaur.jpg",
+      "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg",
   },
   {
     name: "Sassy",
@@ -87,7 +88,7 @@ const pets = [
     specialSkill: "Can be around food without staring creepily at it.",
     type: "dino",
     imageUrl:
-      "http://www.cantref.com/userfiles/events/walking%20dino.jpg?w=600",
+      "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg",
   },
   {
     name: "Buster",
@@ -128,7 +129,7 @@ const pets = [
     specialSkill: "Drives at a safe rate of speed in snow or rain.",
     type: "dino",
     imageUrl:
-      "https://images.readwrite.com/wp-content/uploads/2018/03/t-rex-dino-quiz-e1490854556549.jpg",
+      "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg",
   },
   {
     name: "Muffin",
@@ -136,7 +137,8 @@ const pets = [
     specialSkill:
       "Does not freak out if you haven’t seen his favorite movie (The Big Lebowski).",
     type: "cat",
-    imageUrl: "http://www.funnycatsite.com/pictures/Close_Up_Yawn.jpg",
+    imageUrl:
+      "http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg",
   },
   {
     name: "Salem",
@@ -144,7 +146,7 @@ const pets = [
     specialSkill: "Proficient in air guitar",
     type: "dino",
     imageUrl:
-      "https://www.nation.co.ke/image/view/-/4078922/highRes/1742693/-/maxw/600/-/1453yvh/-/DINO.jpg",
+      "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg",
   },
   {
     name: "Callie",
@@ -152,14 +154,15 @@ const pets = [
     specialSkill: "Listens attentively to boring stories.",
     type: "dog",
     imageUrl:
-      "http://dailynewsdig.com/wp-content/uploads/2014/03/Creative-And-Funny-Dog-Stock-Photography-Pictures-2.jpg",
+      "https://www.thetrendywhippet.co.uk/wp-content/uploads/2016/11/IMG_1651-600x400.jpg",
   },
   {
     name: "Spooky",
     color: "Black",
     specialSkill: "Uses litter box at appropriate hours.",
     type: "cat",
-    imageUrl: "http://www.funnycatsite.com/pictures/Lazy_White_Cat.jpg",
+    imageUrl:
+      "http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg",
   },
   {
     name: "Miss kitty",
@@ -167,7 +170,7 @@ const pets = [
     specialSkill: "Owns a Nintendo Power Glove.",
     type: "dino",
     imageUrl:
-      "https://img.buzzfeed.com/buzzfeed-static/static/2015-11/2/12/enhanced/webdr15/anigif_enhanced-29802-1446485228-10.gif?crop=250:165;0,0&downsize=715",
+      "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg",
   },
   {
     name: "Snuggles",
@@ -175,7 +178,7 @@ const pets = [
     specialSkill: "Is comfortable with jokes about his receding hairline.",
     type: "cat",
     imageUrl:
-      "http://funnyanimalphoto.com/wp-content/uploads/2013/08/cat_caught_mouse_thegatewaypundit.jpg",
+      "http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg",
   },
   {
     name: "Buddy",
@@ -192,7 +195,7 @@ const pets = [
       "Participates in karaoke but does not force others to go out to karaoke.",
     type: "dog",
     imageUrl:
-      "http://www.dogbreedplus.com/dog_breeds/images/basset-hound-4.jpg",
+      "https://www.thetrendywhippet.co.uk/wp-content/uploads/2016/11/IMG_1651-600x400.jpg",
   },
   {
     name: "Salem",
@@ -200,7 +203,7 @@ const pets = [
     specialSkill: "Knows the words to 4 rap songs.",
     type: "cat",
     imageUrl:
-      "http://funbk.s3.amazonaws.com/wp-content/uploads/2016/06/funny-cat-video-which-will-make-you-laugh-louder.jpg",
+      "http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg",
   },
   {
     name: "Bubba",
@@ -240,7 +243,7 @@ const pets = [
     specialSkill: "Doesn’t get weirded out by the word “moist.”",
     type: "dino",
     imageUrl:
-      "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119",
+      "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg",
   },
 ];
 pets.forEach((item, index) => {
@@ -248,20 +251,25 @@ pets.forEach((item, index) => {
 });
 
 let petDiv = document.querySelector("#pets");
+let domString = "";
 
-pets.forEach((petObj) => {
-  petDiv.innerHTML += `<div class="card" style="width: 18rem;">
-  <h5 class="card-title">${petObj.name}</h5>
- <img src="${petObj.imageUrl}" class="card-img-top" alt="...">
+for (const petObj of pets) {
+  const catType = petObj.type === "cat";
+  const dogType = petObj.type === "dog";
+  const dinoType = petObj.type === "dino";
+
+  domString += `<div class="card" style="width: 18rem;">
+  <h4 class="card-title">${petObj.name}</h4>
+  <img src="${petObj.imageUrl}" class="card-img-top" alt="...">
 <div class="card-body">
- <li class="list-group-item">${petObj.color}</li>
+  <h5 class="list-group-color">${petObj.color}</h5>
   <p class="card-text">${petObj.specialSkill}</p>
 </div>
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">${petObj.type}</li>
-  
- 
-</ul>
-
+  <h5 ${catType ? "class= cat-type" : ""} ${
+    dogType ? "class= dog-type" : ""
+  } group-type ${dinoType ? "class= dino-type" : ""} id="list-group-type">${
+    petObj.type
+  }</h5>
 </div>`;
-});
+}
+petDiv.innerHTML = domString;
