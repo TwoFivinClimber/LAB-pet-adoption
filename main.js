@@ -1,5 +1,3 @@
-console.log("connected");
-
 const pets = [
   {
     name: "Dusty",
@@ -250,26 +248,118 @@ pets.forEach((item, index) => {
   item.id = index + 1;
 });
 
+///button selectors///
+const catBtn = document.querySelector("#cat-btn");
+const dogBtn = document.querySelector("#dog-btn");
+const dinoBtn = document.querySelector("#dino-btn");
+const allBtn = document.querySelector("#all-btn");
+
 let petDiv = document.querySelector("#pets");
-let domString = "";
-
-for (const petObj of pets) {
-  const catType = petObj.type === "cat";
-  const dogType = petObj.type === "dog";
-  const dinoType = petObj.type === "dino";
-
-  domString += `<div class="card" style="width: 18rem;">
+window.onload = function () {
+  allFunction();
+};
+/// All function ///
+const allFunction = () => {
+  let domString = "";
+  for (const petObj of pets) {
+    const catType = petObj.type === "cat";
+    const dogType = petObj.type === "dog";
+    const dinoType = petObj.type === "dino";
+    domString += `<div class="card" style="width: 18rem;">
   <h4 class="card-title">${petObj.name}</h4>
   <img src="${petObj.imageUrl}" class="card-img-top" alt="...">
 <div class="card-body">
   <h5 class="list-group-color">${petObj.color}</h5>
   <p class="card-text">${petObj.specialSkill}</p>
 </div>
-  <h5 ${catType ? "class= cat-type" : ""} ${
-    dogType ? "class= dog-type" : ""
-  } group-type ${dinoType ? "class= dino-type" : ""} id="list-group-type">${
-    petObj.type
-  }</h5>
+  <h5 ${catType ? "class= cat-type" : ""} ${dogType ? "class= dog-type" : ""} ${
+      dinoType ? "class= dino-type" : ""
+    } id="list-group-type">${petObj.type}</h5>
 </div>`;
-}
-petDiv.innerHTML = domString;
+  }
+  petDiv.innerHTML = domString;
+};
+
+///Cat button filter function///
+const catFunction = (event) => {
+  domString = "";
+  for (const cats of pets) {
+    const catType = cats.type === "cat";
+    const dogType = cats.type === "dog";
+    const dinoType = cats.type === "dino";
+    if (cats.type === "cat") {
+      domString += `<div class="card" style="width: 18rem;">
+      <h4 class="card-title">${cats.name}</h4>
+      <img src="${cats.imageUrl}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="list-group-color">${cats.color}</h5>
+      <p class="card-text">${cats.specialSkill}</p>
+    </div>
+      <h5 ${catType ? "class= cat-type" : ""} ${
+        dogType ? "class= dog-type" : ""
+      } ${dinoType ? "class= dino-type" : ""} id="list-group-type">${
+        cats.type
+      }</h5>
+    </div>`;
+    }
+  }
+  petDiv.innerHTML = domString;
+};
+
+///Dog button filter function///
+const dogFunction = (event) => {
+  domString = "";
+  for (const dogs of pets) {
+    const catType = dogs.type === "cat";
+    const dogType = dogs.type === "dog";
+    const dinoType = dogs.type === "dino";
+    if (dogs.type === "dog") {
+      domString += `<div class="card" style="width: 18rem;">
+      <h4 class="card-title">${dogs.name}</h4>
+      <img src="${dogs.imageUrl}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="list-group-color">${dogs.color}</h5>
+      <p class="card-text">${dogs.specialSkill}</p>
+    </div>
+      <h5 ${catType ? "class= cat-type" : ""} ${
+        dogType ? "class= dog-type" : ""
+      } ${dinoType ? "class= dino-type" : ""} id="list-group-type">${
+        dogs.type
+      }</h5>
+    </div>`;
+    }
+  }
+  petDiv.innerHTML = domString;
+};
+
+///Dino button filter function.///
+const dinoFunction = (event) => {
+  domString = "";
+  for (const dinos of pets) {
+    const catType = dinos.type === "cat";
+    const dogType = dinos.type === "dog";
+    const dinoType = dinos.type === "dino";
+    if (dinos.type === "dino") {
+      domString += `<div class="card" style="width: 18rem;">
+      <h4 class="card-title">${dinos.name}</h4>
+      <img src="${dinos.imageUrl}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="list-group-color">${dinos.color}</h5>
+      <p class="card-text">${dinos.specialSkill}</p>
+    </div>
+      <h5 ${catType ? "class= cat-type" : ""} ${
+        dogType ? "class= dog-type" : ""
+      } ${dinoType ? "class= dino-type" : ""} id="list-group-type">${
+        dinos.type
+      }</h5>
+    </div>`;
+    }
+  }
+  petDiv.innerHTML = domString;
+};
+
+///event listeners///
+catBtn.addEventListener("click", catFunction);
+dogBtn.addEventListener("click", dogFunction);
+dinoBtn.addEventListener("click", dinoFunction);
+allBtn.addEventListener("click", allFunction);
