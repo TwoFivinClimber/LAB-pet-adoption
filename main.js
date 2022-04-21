@@ -363,3 +363,5 @@ catBtn.addEventListener("click", catFunction);
 dogBtn.addEventListener("click", dogFunction);
 dinoBtn.addEventListener("click", dinoFunction);
 allBtn.addEventListener("click", allFunction);
+
+console.log("testing out git");
