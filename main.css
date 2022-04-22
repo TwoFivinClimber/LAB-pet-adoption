@@ -63,3 +63,33 @@ body {
   align-items: center;
   padding-top: 8px;
 }
+.form-container {
+  width: 79%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border: 2px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+label {
+  width: 75px;
+}
+input {
+  margin: 0px;
+  width: 500px;
+}
+select {
+  display: inline;
+}
+#submit {
+  width: 75px;
+  margin-left: 300px;
+}
+#chooseAnimal {
+  width: 100px;
+  display: inline;
+  margin-right: 30px;
+}
