@@ -22,21 +22,24 @@
     </div>
     <div class="container" id="pets"></div>
 
-    <div class="form-container">
+    <div class="form-container" id="form">
       <h3>Add Your Pet !</h3>
-      <form action="/action_page.php">
-        <label for="pname">Pet Name</label>
-        <input type="text" id="pname" name="pname" /><br /><br />
-        <label for="pcolor">Pet Color</label>
-        <input type="text" id="pcolor" name="pcolor" /><br /><br />
-        <label for="pskill">Pet Skill</label>
-        <input type="text" id="pskill" name="pskill" /><br /><br />
-        <label id="chooseAnimal" for="ptype">Choose you Animal</label>
-        <select name="ptype" id="ptype">
+      <form class="form" action="/action_page.php">
+        <label for="petName">Pet Name</label>
+        <input type="text" id="petName" name="petName" /><br /><br />
+        <label for="petColor">Pet Color</label>
+        <input type="text" id="petColor" name="petColor" /><br /><br />
+        <label for="petSkill">Pet Skill</label>
+        <input type="text" id="petSkill" name="petSkill" /><br /><br />
+        <label id="chooseAnimal" for="ptype">Choose your Animal</label>
+        <select name="petType" id="petType">
           <option value="cat">Cat</option>
           <option value="dog">Dog</option>
           <option value="dino">Dino</option>
         </select>
+        <label class="petImage" for="petImage">Pet Photo Url</label>
+        <input type="text" id="petImage" name="petImage" /><br /><br />
+
         <input type="submit" value="Submit" id="submit" />
       </form>
     </div>
