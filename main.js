@@ -246,9 +246,8 @@ const pets = [
 ];
 //Adds ID to Objects
 pets.forEach((item, index) => {
-  item.id = index + 1;
+  item.id = index += 1;
 });
-
 ///button selectors///
 const catBtn = document.querySelector("#cat-btn");
 const dogBtn = document.querySelector("#dog-btn");
@@ -261,7 +260,6 @@ let petDiv = document.querySelector("#pets");
 window.onload = function () {
   filterFunction(pets);
 };
-
 //Function to Render on DOM
 const filterFunction = (arr) => {
   domString = "";
@@ -269,7 +267,7 @@ const filterFunction = (arr) => {
     const catType = petObj.type === "cat";
     const dogType = petObj.type === "dog";
     const dinoType = petObj.type === "dino";
-    domString += `<div class="card" style="width: 18rem;">
+    domString += `<div id="card" class="card" style="width: 18rem;">
       <h4 class="card-title">${petObj.name}</h4>
       <img src="${petObj.imageUrl}" class="card-img-top" alt="...">
     <div class="card-body">
@@ -281,8 +279,12 @@ const filterFunction = (arr) => {
     } ${dinoType ? "class= dino-type" : ""} id="list-group-type">${
       petObj.type
     }</h5>
+    <button id="delete--${
+      petObj.id
+    }" class="btn btn-outline-dark">Delete Animal</button>
     </div>`;
   }
+
   petDiv.innerHTML = domString;
 };
 
@@ -316,4 +318,35 @@ dinoBtn.addEventListener("click", function () {
 });
 allBtn.addEventListener("click", function () {
   filterFunction(pets);
+});
+
+//Add animal to list//
+
+const form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const newAnimalObj = {
+    name: document.querySelector("#petName").value,
+    color: document.querySelector("#petColor").value,
+    specialSkill: document.querySelector("#petSkill").value,
+    type: document.querySelector("#petType").value,
+    imageUrl: document.querySelector("#petImage").value,
+  };
+  pets.push(newAnimalObj);
+  filterFunction(pets);
+  form.reset();
+});
+
+//Delete animal//
+document.querySelector("#pets").addEventListener("click", (e) => {
+  if (e.target.id) {
+    const [method, id] = e.target.id.split("--");
+    console.log(id);
+    const index = pets.findIndex((i) => i.id === id);
+    if (e.target.id.includes("delete")) {
+      console.log(index);
+      pets.splice(index, 1);
+      filterFunction(pets);
+    }
+  }
 });
