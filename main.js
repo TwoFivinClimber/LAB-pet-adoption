@@ -306,9 +306,9 @@ const filterFunction = (arr) => {
     } ${dinoType ? "class= dino-type" : ""} id="list-group-type">${
       petObj.type
     }</h5>
-    <button id="delete--${
+    <button id="delete ${
       petObj.id
-    }" class="btn btn-outline-dark">Delete Animal</button>
+    }" class="btn btn-outline-dark">Delete</button>
     </div>`;
   }
 
@@ -367,13 +367,13 @@ form.addEventListener("submit", (e) => {
 //Delete animal//
 document.querySelector("#pets").addEventListener("click", (e) => {
   if (e.target.id) {
-    const [method, id] = e.target.id.split("--");
+    const [method, id] = e.target.id.split(" ");
     console.log(id);
-    const index = pets.findIndex((taco) => taco.id === );
-    console.log(index);
+    const index = pets.findIndex((taco) => taco.id === parseInt(id));
     if (e.target.id.includes("delete")) {
       pets.splice(index, 1);
       filterFunction(pets);
+      console.log(e);
     }
   }
 });
