@@ -275,19 +275,14 @@ const pets = [
   },
 ];
 
-///button selectors///
-const catBtn = document.querySelector("#cat-btn");
-const dogBtn = document.querySelector("#dog-btn");
-const dinoBtn = document.querySelector("#dino-btn");
-const allBtn = document.querySelector("#all-btn");
-
-//Div to fill
-let petDiv = document.querySelector("#pets");
 //Loads page when opened
-window.onload = function () {
-  filterFunction(pets);
+
+const renderToDom = (divId, textToRender) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = textToRender;
 };
-//Function to Render on DOM
+
+//filter function
 const filterFunction = (arr) => {
   domString = "";
   for (const petObj of arr) {
@@ -306,74 +301,79 @@ const filterFunction = (arr) => {
     } ${dinoType ? "class= dino-type" : ""} id="list-group-type">${
       petObj.type
     }</h5>
-    <button id="delete ${
+    <button id="delete--${
       petObj.id
     }" class="btn btn-outline-dark">Delete</button>
     </div>`;
   }
-
-  petDiv.innerHTML = domString;
+  renderToDom("#pet-div", domString);
 };
 
-///event listener filters///
-catBtn.addEventListener("click", function () {
-  const catArr = [];
-  for (petObj of pets) {
-    if (petObj.type === "cat") {
-      catArr.push(petObj);
-    }
-  }
-  filterFunction(catArr);
-});
-dogBtn.addEventListener("click", function () {
-  const dogArr = [];
-  for (petObj of pets) {
-    if (petObj.type === "dog") {
-      dogArr.push(petObj);
-    }
-  }
-  filterFunction(dogArr);
-});
-dinoBtn.addEventListener("click", function () {
-  const dinoArr = [];
-  for (petObj of pets) {
-    if (petObj.type === "dino") {
-      dinoArr.push(petObj);
-    }
-  }
-  filterFunction(dinoArr);
-});
-allBtn.addEventListener("click", function () {
-  filterFunction(pets);
-});
+const buttonRender = () => {
+  let domstring = "";
+  domstring = `<button type="button" id="cat-btn" class="btn btn-primary">Cats</button>
+  <button type="button" id="dog-btn" class="btn btn-success">Dogs</button>
+  <button type="button" id="dino-btn" class="btn btn-warning">Dinos</button>
+  <button type="button" id="all-btn" class="btn btn-dark">ALL</button>`;
+  renderToDom("#btn-div", domstring);
+};
 
-//Add animal to list//
-
-const form = document.querySelector("form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const newAnimalObj = {
-    name: document.querySelector("#petName").value,
-    color: document.querySelector("#petColor").value,
-    specialSkill: document.querySelector("#petSkill").value,
-    type: document.querySelector("#petType").value,
-    imageUrl: document.querySelector("#petImage").value,
-  };
-  pets.push(newAnimalObj);
-  filterFunction(pets);
-  form.reset();
-});
-
-//Delete animal//
-document.querySelector("#pets").addEventListener("click", (e) => {
-  if (e.target.id) {
-    const [method, id] = e.target.id.split(" ");
-    console.log(id);
-    const index = pets.findIndex((taco) => taco.id === parseInt(id));
-    if (e.target.id.includes("delete")) {
-      pets.splice(index, 1);
+const filterEvents = () => {
+  document.querySelector("#btn-div").addEventListener("click", (e) => {
+    // document.querySelector("cat-btn").addEventListener("click", function () {
+    if (e.target.id === "cat-btn") {
+      const catArr = pets.filter((type) => type.type === "cat");
+      filterFunction(catArr);
+    }
+    if (e.target.id === "dog-btn") {
+      const dogArr = pets.filter((type) => type.type === "dog");
+      filterFunction(dogArr);
+    }
+    if (e.target.id === "dino-btn") {
+      const dinoArr = pets.filter((type) => type.type === "dino");
+      filterFunction(dinoArr);
+    }
+    if (e.target.id === "all-btn") {
       filterFunction(pets);
-      console.log(e);
     }
-  }
-});
+  });
+};
+const deleteFunc = () => {
+  document.querySelector("#pet-div").addEventListener("click", (e) => {
+    if (e.target.id) {
+      const [method, id] = e.target.id.split("--");
+      console.log(id);
+      const index = pets.findIndex((taco) => taco.id === parseInt(id));
+      if (e.target.id.includes("delete")) {
+        pets.splice(index, 1);
+        filterFunction(pets);
+      }
+    }
+  });
+};
+
+//Add Animal
+const addForm = () => {
+  document.querySelector("#form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newAnimalObj = {
+      name: document.querySelector("#petName").value,
+      color: document.querySelector("#petColor").value,
+      specialSkill: document.querySelector("#petSkill").value,
+      type: document.querySelector("#petType").value,
+      imageUrl: document.querySelector("#petImage").value,
+    };
+    pets.push(newAnimalObj);
+    filterFunction(pets);
+    form.reset();
+  });
+};
+
+const startApp = () => {
+  filterFunction(pets);
+  buttonRender();
+  filterEvents();
+  addForm();
+  deleteFunc();
+};
+startApp();

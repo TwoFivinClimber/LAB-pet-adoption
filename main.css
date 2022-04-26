@@ -79,7 +79,7 @@ label {
 }
 input {
   margin: 5px;
-  width: 500px;
+  width: 75%;
 }
 select {
   display: inline;
