@@ -11,12 +11,18 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
+    <h1>Pet Adoption</h1>
     <div class="btn-div" id="btn-div"></div>
     <div class="container" id="pet-div"></div>
-
     <div class="form-container" id="form">
       <h3>Add Your Pet !</h3>
       <form class="form" id="petForm" action="/action_page.php">
@@ -34,7 +40,6 @@
         </select>
         <label class="petImage" for="petImage">Pet Photo Url</label>
         <input type="text" id="petImage" name="petImage" /><br /><br />
-
         <input type="submit" value="Submit" id="submit" />
       </form>
     </div>
