@@ -1,7 +1,16 @@
 body {
-  background-color: lightsalmon;
+  background: linear-gradient(#ef6351, #ff9f1c);
+  color: 0, 100%;
+  --l: 50%;
+  width: 1100px;
+  margin: auto;
+  font-family: "Arvo", serif;
 }
-
+h1 {
+  font-size: 56px;
+  text-align: center;
+  margin-top: 30px;
+}
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -19,6 +28,7 @@ body {
 .card {
   margin-top: 10px;
   text-align: center;
+  background-color: #f6efee;
 }
 
 .card-title {
@@ -73,7 +83,7 @@ body {
 }
 
 label {
-  width: 75px;
+  width: 120px;
   display: block;
   height: 20px;
 }
