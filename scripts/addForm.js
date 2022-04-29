@@ -14,7 +14,7 @@ const addForm = () => {
     };
     pets.push(newAnimalObj);
     filterFunction(pets);
-    document.getElementById("#form").reset();
+    form.reset("#form");
   });
 };
 
